@@ -32,12 +32,13 @@ pub use crate::sources::directwrite::DirectWriteSource as SystemSource;
         target_os = "macos",
         target_os = "ios",
         target_family = "windows",
-        target_arch = "wasm32"
+        target_arch = "wasm32",
+        feature = "source-fs-default"
     )),
     feature = "source-fontconfig-default"
 ))]
 pub use crate::sources::fontconfig::FontconfigSource as SystemSource;
-#[cfg(all(target_os = "android", not(feature = "source-fontconfig-default")))]
+#[cfg(any(all(target_os = "android", not(feature = "source-fontconfig-default")), feature = "source-fs-default"))]
 pub use crate::sources::fs::FsSource as SystemSource;
 
 // FIXME(pcwalton): These could expand to multiple fonts, and they could be language-specific.
