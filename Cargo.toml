@@ -11,7 +11,7 @@ exclude = ["resources/**"]
 edition = "2018"
 
 [features]
-default = ["source-fs-default"]
+default = ["source", "source-fs-default"]
 loader-freetype = ["freetype"]
 loader-freetype-default = ["loader-freetype"]
 source-fontconfig = ["servo-fontconfig"]
